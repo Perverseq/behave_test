@@ -7,11 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 sites = {"google.ru": "https:\\www.google.ru",
          "pw.mail.ru": "https:\\pw.mail.ru"}
 
-buttons = {"Новости": "//*[@id='menu']/li[1]/a",
-           "Об игре": "//*[@id='menu']/li[2]/a",
-           "Медиа": "//*[@id='menu']/li[3]/a",
-           "Скачать": "//*[@id='menu']/li[4]/a",
-           "Сообщество": "//*[@id='menu']/li[5]/a"}
+buttons = {"Новости": "//*[@class='menu_news']",
+           "Об игре": "//*[@class='menu_about']",
+           "Медиа": "//*[@class='menu_media']",
+           "Скачать": "//*[@class='menu_download']",
+           "Сообщество": "//*[@class='menu_community']"}
 
 content = {"Новости": "Все новости",
            "Об игре": "Вопросы по крафту",
@@ -75,6 +75,7 @@ def step_impl(context, text):
 
 @then('Нашли поле "{text}" и ввели "{text1}"')
 def step_impl(context, text, text1):
+    WebDriverWait(context.driver, 3).until((EC.presence_of_element_located((By.XPATH, fields[text]))))
     context.driver.find_element_by_xpath(fields[text]).send_keys(data[text1])
 
 @then('Нажали на кнопку "Пополнить счет"')
