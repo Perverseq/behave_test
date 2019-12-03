@@ -47,7 +47,7 @@ def step_impl(context, text):
 
 @step('Нажали кнопку "Поиск в Google"')
 def step_impl(context):
-    context.driver.find_element_by_xpath("//*[@class='FPdoLc VlcLAe']/center/input[@class='gNO89b']").click()
+    context.driver.find_element_by_xpath("//*[@class='FPdoLc tfB0Bf']/center/input[@class='gNO89b']").click()
 
 
 @then('Нажали на ссылку "{text}"')
